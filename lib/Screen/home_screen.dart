@@ -5,7 +5,9 @@ final homeUri = Uri.parse('https://blog.codefactory.ai');
 
 class HomeScreen extends StatelessWidget {
 
-  WebViewController controller = new WebViewController()..loadRequest(homeUri);
+  WebViewController controller = new WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    ..loadRequest(homeUri);
 
   HomeScreen({super.key});
 
