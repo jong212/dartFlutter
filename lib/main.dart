@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'package:flt_proj/Screen/home_screen.dart';
 void main() {
   runApp(
     MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.black,
-        body: Center(
-          child: Text('Code Factory',
-          style: TextStyle(color: Colors.white)),
-        ),
-      ),
+      home:HomeScreen(),
     ),
   );
 }
+
