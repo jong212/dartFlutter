@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-final homeUri = Uri.parse('https://blog.codefactory.ai');
+final homeUri = Uri.parse('https://cherry22.tistory.com');
 
 class HomeScreen extends StatelessWidget {
 
@@ -18,6 +18,14 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.orange,
         title: Text('Code FactoraaaaAS'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: (){
+              controller.loadRequest(homeUri);
+            },
+            icon: Icon(Icons.home),
+          ),
+        ],
       ),
       body: WebViewWidget(
           controller: controller,
