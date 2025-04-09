@@ -31,34 +31,24 @@ class _Top extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-      Expanded(
+    
+    return Expanded(
         child: Container(
           child: Column(
             children: [
               Text(
                 'U&I',
-                style: TextStyle(
-                    color:Colors.white,
-                    fontFamily: 'parisienne',
-                    fontSize: 80
-                ),
+                style: Theme.of(context).textTheme.displayLarge,
               ),
               Text(
                 '우리 처음 만난날',
-                style: TextStyle(
-                    color:Colors.white,
-                    fontSize: 30,
-                    fontFamily: 'sunflower'
-                ),
+                style: Theme.of(context).textTheme.bodyLarge,
+
               ),
               Text(
                 '2023.11.23',
-                style: TextStyle(
-                    color:Colors.white,
-                    fontFamily: 'sunflower',
-                    fontSize: 20
-                ),
+                style: Theme.of(context).textTheme.bodyMedium,
+
               ),
               IconButton(
                   iconSize: 60,
@@ -71,12 +61,8 @@ class _Top extends StatelessWidget {
               ),
               Text(
                 'D+1',
-                style: TextStyle(
-                    color:Colors.white,
-                    fontFamily: 'sunflower',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 50
-                ),
+                style: Theme.of(context).textTheme.displayMedium,
+
               )
             ],
           ),
