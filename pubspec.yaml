@@ -51,6 +51,20 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - asset/img/
+
+  fonts:
+    - family: parisienne
+      fonts:
+        - asset: asset/font/Parisienne-Regular.ttf
+    - family: sunflower
+      fonts:
+        - asset: asset/font/Sunflower-Light.ttf
+        - asset: asset/font/Sunflower-Medium.ttf
+          weight: 500
+        - asset: asset/font/Sunflower-Bold.ttf
+          weight: 700
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -73,6 +87,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+
   # fonts:
   #   - family: Schyler
   #     fonts:
