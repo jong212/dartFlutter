@@ -1,8 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  DateTime selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +25,61 @@ class HomeScreen extends StatelessWidget {
           child: Column(
 
             children: [
-              _Top(),
+              _Top(
+                selectedDate: selectedDate,
+                onPressed :  OnHeartPressed,
+              ),
               _Bottom(),
             ],
           ),
         ),
       )
     );
-  }  
+  }
+
+  void OnHeartPressed(){
+
+    showCupertinoDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context){
+          return Align(
+            alignment: Alignment.center,
+            child: Container(
+              color: Colors.white,
+              height: 300,
+              child: CupertinoDatePicker(
+                  mode: CupertinoDatePickerMode.date,
+                  initialDateTime: selectedDate,
+                  maximumDate: DateTime.now(),
+                  dateOrder: DatePickerDateOrder.ymd ,
+                  onDateTimeChanged: (DateTime date){
+                    setState(() {
+                      selectedDate = date;
+                    });
+                    print(date);
+                  }
+              ),
+            ),
+          );
+        }
+    );
+  }
 }
 class _Top extends StatelessWidget {
-  const _Top({super.key});
+  final DateTime selectedDate;
+  final VoidCallback? onPressed;
+
+  const _Top({
+    required this.selectedDate,
+    required this.onPressed,
+    super.key
+  });
 
   @override
   Widget build(BuildContext context) {
-    
+    final nowD = DateTime.now();
+
     return Expanded(
         child: Container(
           child: Column(
@@ -47,42 +94,21 @@ class _Top extends StatelessWidget {
 
               ),
               Text(
-                '2023.11.23',
+                '${selectedDate.year}.${selectedDate.month}.${selectedDate.day }',
                 style: Theme.of(context).textTheme.bodyMedium,
 
               ),
               IconButton(
                   iconSize: 60,
                   color: Colors.red,
-                  onPressed: (){
-                    showCupertinoDialog(
-                        context: context,
-                        barrierDismissible: true,
-                        builder: (BuildContext context){
-                          return Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              color: Colors.white,
-                              height: 300,
-                              child: CupertinoDatePicker(
-                                mode: CupertinoDatePickerMode.date,
-                                  dateOrder: DatePickerDateOrder.ymd ,
-                                  onDateTimeChanged: (DateTime date){
-                                print(date);
-                              }
-                              ),
-                            ),
-                          );
-                        }
-                    );
-                  },
+                  onPressed:onPressed,
                   icon:
                   Icon(
                       Icons.favorite
                   )
               ),
               Text(
-                'D+1',
+                'D+${nowD.difference(selectedDate).inDays +1}',
                 style: Theme.of(context).textTheme.displayMedium,
 
               )
